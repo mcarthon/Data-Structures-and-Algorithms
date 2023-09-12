@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Move element &apos;Implementation.java&apos; to &apos;QuickSort/src/code&apos;&#x0D;&#x0A;- Original project: &apos;QuickSort&apos;&#x0D;&#x0A;- Destination element: &apos;QuickSort/src/code&apos;&#x0D;&#x0A;- Original element: &apos;Implementation.java&apos;&#x0D;&#x0A;- Update references to refactored element" description="Move compilation unit" destination="/src&lt;code" element1="/src&lt;{Implementation.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.move" policy="org.eclipse.jdt.ui.moveResources" qualified="false" references="true" stamp="1694540169031" units="1" version="1.0"/>
+</session>

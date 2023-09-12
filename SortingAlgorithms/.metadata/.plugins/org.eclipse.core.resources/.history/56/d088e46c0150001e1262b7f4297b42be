@@ -1,0 +1,91 @@
+import java.util.ArrayList;
+import java.util.List;
+
+public class MergeSort {
+
+    public static void main (String[] args ) {
+
+    ArrayList<Integer> testArray = new ArrayList<Integer> ();
+
+    testArray.add(1);
+    testArray.add(2);
+    testArray.add(3);
+    testArray.add(4);
+
+    merge_sort(testArray);
+
+    }
+
+    static ArrayList<Integer> merge_sort(ArrayList<Integer> arr) {
+        
+        int start = 0;
+        
+        int end = arr.size() - 1;
+        
+        if ( start == end ) {
+            
+            return arr;
+            
+        }
+        
+        int midIndex = ( start + end ) / 2;
+        
+        List<Integer> firstHalf = arr.subList ( start, midIndex );
+        
+        ArrayList<Integer> firstHalfArrayList = new ArrayList<Integer>( firstHalf );
+        
+        merge_sort ( firstHalfArrayList );
+        
+        List<Integer> secondHalf = arr.subList ( midIndex, end );
+        
+        ArrayList<Integer> secondHalfArrayList = new ArrayList<Integer>( secondHalf );
+        
+        merge_sort ( secondHalfArrayList );
+        
+        int i = start;
+        
+        int j = midIndex;
+        
+        ArrayList<Integer> auxArray = new ArrayList<Integer>();
+        
+        while ( i < midIndex && j <= end ) {
+            
+            if ( arr.get ( i ) < arr.get ( j ) ) {
+                
+                auxArray.add ( arr.get ( i ) );
+                
+                i ++;
+                
+            }
+            
+            else {
+                
+                auxArray.add ( arr.get ( j ) );
+                
+                j ++;
+                
+            }
+            
+        }
+        
+        while ( i < midIndex ) {
+            
+            auxArray.add ( arr.get ( i ) );
+            
+            i ++;
+            
+        }
+        
+        while ( j <= end ) {
+            
+            auxArray.add ( arr.get ( j ) );
+            
+            j ++;
+            
+        }
+        
+        return auxArray;
+
+    }
+
+}
