@@ -78,7 +78,9 @@ public class Implementation {
 	        
 	        Random random = new Random();
 	        
-	        int pivotIndex = random.nextInt ( end - start + 1 ) + start;	        	      
+	        int pivotIndex = random.nextInt ( end - start + 1 ) + start;	    
+	        
+	        int pivot = arr.get( pivotIndex );
 	        
 	        int leftPointer = start;
 	        
@@ -88,7 +90,7 @@ public class Implementation {
 	        
 	        while ( runner <= rightPointer ) {	        		   
 	            
-	            if ( arr.get ( runner ) < arr.get ( pivotIndex ) ) {
+	            if ( arr.get ( runner ) < pivot ) {
 	            	
 	            	swap ( arr, leftPointer, runner );
 	            	
@@ -98,7 +100,7 @@ public class Implementation {
 	            	
 	            }
 	            
-	            else if ( arr.get ( runner ) > arr.get ( pivotIndex ) ) {
+	            else if ( arr.get ( runner ) > pivot ) {
 	            	
 	            	swap ( arr, rightPointer, runner );
 	            	
