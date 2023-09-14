@@ -1,6 +1,5 @@
 package MergeSort;
 import java.util.ArrayList;
-import java.util.List;
 
 public class MergeSort {
 
@@ -17,11 +16,8 @@ public class MergeSort {
 
     }
 
+
     static ArrayList<Integer> merge_sort(ArrayList<Integer> arr) {
-        
-        int start = 0;
-        
-        int end = arr.size() - 1;
         
         if ( arr.size() <= 1 ) {
             
@@ -29,27 +25,27 @@ public class MergeSort {
             
         }
         
-        int midIndex = ( start + end ) / 2;
+        ArrayList<Integer> firstHalfArrayList = new ArrayList<Integer>( arr.subList ( 0, arr.size() / 2 ) );
         
-        List<Integer> firstHalf = arr.subList ( start, midIndex );
-        
-        ArrayList<Integer> firstHalfArrayList = new ArrayList<Integer>( firstHalf );
+        ArrayList<Integer> secondHalfArrayList = new ArrayList<Integer>( arr.subList ( arr.size() / 2, arr.size() ) );
         
         firstHalfArrayList = merge_sort ( firstHalfArrayList );
         
-        List<Integer> secondHalf = arr.subList ( midIndex, end );
-        
-        ArrayList<Integer> secondHalfArrayList = new ArrayList<Integer>( secondHalf );
-        
         secondHalfArrayList = merge_sort ( secondHalfArrayList );
         
-        int i = start;
+        return merge ( firstHalfArrayList, secondHalfArrayList );
         
-        int j = midIndex;
+    }
+        
+    static ArrayList<Integer> merge ( ArrayList<Integer> firstHalfArrayList, ArrayList<Integer> secondHalfArrayList ) {
+        
+        int i = 0;
+        
+        int j = 0;
         
         ArrayList<Integer> auxArray = new ArrayList<Integer>();
         
-        while ( i < midIndex && j <= end ) {
+        while ( i < firstHalfArrayList.size() && j < secondHalfArrayList.size() ) {
             
             if ( firstHalfArrayList.get ( i ) < secondHalfArrayList.get ( j ) ) {
                 
@@ -69,7 +65,7 @@ public class MergeSort {
             
         }
         
-        while ( i < midIndex ) {
+        while ( i < firstHalfArrayList.size() ) {
             
             auxArray.add ( firstHalfArrayList.get ( i ) );
             
@@ -77,7 +73,7 @@ public class MergeSort {
             
         }
         
-        while ( j <= end ) {
+        while ( j < secondHalfArrayList.size() ) {
             
             auxArray.add ( secondHalfArrayList.get ( j ) );
             
@@ -86,7 +82,7 @@ public class MergeSort {
         }
         
         return auxArray;
-
+        
     }
 
 }

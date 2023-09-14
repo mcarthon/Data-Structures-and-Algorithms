@@ -20,12 +20,43 @@ public class Implementation {
 	    quick_sort(testArray);
 	    
 	    System.out.println ( testArray );
+	    
+	    ArrayList<Integer> testArray1 = new ArrayList<Integer> ();
+
+	    testArray1.add(7);
+	    testArray1.add(7);
+	    testArray1.add(7);
+	    testArray1.add(7);
+	    testArray1.add(7);
+	    testArray1.add(7);
+	    testArray1.add(7);
+
+	    quick_sort(testArray1);
+	    
+	    System.out.println ( testArray1 );
+	    
+	    ArrayList<Integer> testArray2 = new ArrayList<Integer> ();
+
+	    testArray2.add(1);
+	    testArray2.add(2);
+	    testArray2.add(3);
+	    testArray2.add(0);
+	    testArray2.add(-1);
+	    testArray2.add(-2);
+	    testArray2.add(-3);
+
+	    quick_sort(testArray2);
+	    
+	    System.out.println ( testArray2 );
 
 	    }
 	
-	static void quick_sort ( ArrayList<Integer> arr ) {
+    
+    static ArrayList<Integer> quick_sort ( ArrayList<Integer> arr ) {
 		
 		helper ( arr, 0, arr.size () - 1 );
+		
+		return arr;
 		
 	}
 	
@@ -37,7 +68,7 @@ public class Implementation {
 			
 			helper ( arr, start, pivotIndices[0] );
 			
-			helper ( arr, pivotIndices[1], end );
+			helper ( arr, pivotIndices[1] + 1, end );
 			
 		}
 		
@@ -83,7 +114,7 @@ public class Implementation {
 
 	    }
 	        
-	        return new int[] { rightPointer, runner };
+	        return new int[] { leftPointer - 1, rightPointer };
 	        
 	 }
 	    
@@ -96,5 +127,5 @@ public class Implementation {
 	        arr.set ( right, temp );
 	        
 	    }
-
+	    
 }
