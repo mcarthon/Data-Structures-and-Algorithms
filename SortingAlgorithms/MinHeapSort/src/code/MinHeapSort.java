@@ -22,7 +22,9 @@ public class MinHeapSort {
 
 	}
 	
-	static ArrayList<Integer> minHeapify ( ArrayList<Integer> arr ) {				
+	static ArrayList<Integer> minHeapify ( ArrayList<Integer> arr ) {	
+		
+		heapify ( arr, 1 );
 		
 		ArrayList<Integer> minHeap = new ArrayList<Integer> ();
 		
@@ -31,6 +33,8 @@ public class MinHeapSort {
 			Integer currentMin = extractMin ( arr );
 			
 			insert ( minHeap, currentMin );
+			
+			System.out.println ( minHeap );
 			
 		}
 		
@@ -42,89 +46,99 @@ public class MinHeapSort {
 		
 		arr.add ( newInt );		
 		
-		checkIfMinHeap ( arr, arr.size () - 1 );
+	}
+	
+	static boolean heapify ( ArrayList<Integer> arr, int parentNode ) {
 		
+		if ( arr.size () < 1 ) {
+			
+			return true;
+			
+		}
+		
+		if ( arr.get ( 0 ) != null ) {
+			
+			addNullAtStart ( arr );
+						
+		}		
+		
+		if ( parentNode >= arr.size () - 1  ) {
+			
+			arr.remove ( 0 );
+			
+			return true;
+			
+		}
+		
+		Integer parentValue = arr.get ( parentNode );
+			
+		int leftChildIndex = 2 * parentNode;
+			
+		int rightChildIndex = leftChildIndex + 1;
+			
+		if ( leftChildIndex > arr.size () - 1 ) {
+				
+			heapify ( arr, parentNode + 1 );
+			
+			return true;
+				
+		} 
+			
+		Integer leftChildValue = arr.get ( leftChildIndex );
+			
+		Integer rightChildValue = ( rightChildIndex > arr.size () - 1 ) ? parentValue + leftChildValue : arr.get ( rightChildIndex );
+			
+		if ( parentValue > leftChildValue || parentValue > rightChildValue ) {
+			
+			if ( leftChildValue <= rightChildValue ) {
+					
+				swap ( arr, parentNode, leftChildIndex );
+					
+				heapify ( arr, 1 );
+					
+			}
+				
+			else if ( rightChildValue < leftChildValue ) {
+					
+				swap ( arr, parentNode, rightChildIndex );
+					
+				heapify ( arr, 1 );
+					
+			}
+				
+		}
+		
+		else {
+			
+			heapify ( arr, parentNode + 1 );
+			
+		}
+		
+		if ( arr.get ( 0 ) == null ) {
+			
+			arr.remove ( 0 );
+			
+		}
+		
+		return true;
+							
 	}
 	
 	static Integer extractMin ( ArrayList<Integer> arr ) {
 		
 		Integer tentativeMin = arr.get ( 0 );
 		
-		for ( int index = 1; index < arr.size (); ++ index ) {
+		if ( arr.size () > 1 ) {
 			
-			if ( arr.get ( index ) < tentativeMin ) {
-				
-				tentativeMin = arr.get ( index ); 
-				
-			}
+			swap ( arr, 0, arr.size () - 1 );			
 			
 		}
 		
-		int indexOfTentativeMin = arr.indexOf ( tentativeMin );
+		arr.remove ( arr.size () - 1 );
 		
-		arr.remove ( indexOfTentativeMin );
+		heapify ( arr, 1 );
 		
 		return tentativeMin;
-		
-	}
-	
-	static boolean checkIfMinHeap ( ArrayList<Integer> arr, int index ) {
-		
-		addNullAtStart ( arr );
-		
-		int parentIndex = index / 2;
-		
-		if ( parentIndex == 0 ) {
-		
-			arr.remove ( 0 );
-		
-			return true;
-		
-		}
-		
-		int leftChildIndex = 2 * parentIndex;
-		
-		int rightChildIndex = 2 * parentIndex + 1; 
-		
-		Integer parent = arr.get ( parentIndex );
-		
-		Integer leftChild = arr.get ( leftChildIndex );
-		
-		Integer rightChild = arr.get ( rightChildIndex );
-		
-		if ( parent == null || leftChild == null ) {
-		
-			arr.remove ( 0 );
-		
-			return true;
-		
-		} 
-		
-		if ( rightChild == null ) {
-		
-			rightChild = leftChild + parent;
-		
-		}
-		
-		if ( leftChild < parent && leftChild < rightChild ) {
-			
-			swap ( arr, parentIndex, leftChildIndex );
-			
-			checkIfMinHeap ( arr, parentIndex );
-			
-		}
-		
-		else if ( rightChild < parent && rightChild < leftChild ) {
-			
-			swap ( arr, parentIndex, rightChildIndex );
-			
-			checkIfMinHeap ( arr, parentIndex );
-			
-		}
-		
-		arr.remove ( 0 );  
-		
-		return true;
 		
 	}
 	
