@@ -34,8 +34,6 @@ public class MinHeapSort {
 			
 			insert ( minHeap, currentMin );
 			
-			System.out.println ( minHeap );
-			
 		}
 		
 		return minHeap;
