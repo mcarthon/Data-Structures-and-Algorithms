@@ -32,7 +32,7 @@ public class MinHeapSort {
 			
 			Integer currentMin = extractMin ( arr );
 			
-			insert ( minHeap, currentMin );
+			minHeap.add ( currentMin );
 			
 		}
 		
@@ -40,85 +40,59 @@ public class MinHeapSort {
 		
 	}
 	
-	static void insert ( ArrayList<Integer> arr, Integer newInt ) {
+	static void heapify ( ArrayList<Integer> arr, int parentNode ) {
 		
-		arr.add ( newInt );		
+		addNullAtStart ( arr );	
 		
-	}
-	
-	static boolean heapify ( ArrayList<Integer> arr, int parentNode ) {
-		
-		if ( arr.size () < 1 ) {
-			
-			return true;
-			
-		}
-		
-		if ( arr.get ( 0 ) != null ) {
-			
-			addNullAtStart ( arr );
+		while ( parentNode < arr.size() ) {
 						
-		}		
-		
-		if ( parentNode >= arr.size () - 1  ) {
+			Integer parentValue = arr.get ( parentNode );
 			
-			arr.remove ( 0 );
+			int leftChildIndex = 2 * parentNode;
 			
-			return true;
+			int rightChildIndex = leftChildIndex + 1;
 			
-		}
-		
-		Integer parentValue = arr.get ( parentNode );
-			
-		int leftChildIndex = 2 * parentNode;
-			
-		int rightChildIndex = leftChildIndex + 1;
-			
-		if ( leftChildIndex > arr.size () - 1 ) {
+			if ( leftChildIndex > arr.size () - 1 ) {
 				
-			heapify ( arr, parentNode + 1 );
-			
-			return true;
+				parentNode ++;
 				
-		} 
+				continue;
+				
+			} 
 			
-		Integer leftChildValue = arr.get ( leftChildIndex );
+			Integer leftChildValue = arr.get ( leftChildIndex );
 			
-		Integer rightChildValue = ( rightChildIndex > arr.size () - 1 ) ? parentValue + leftChildValue : arr.get ( rightChildIndex );
+			Integer rightChildValue = ( rightChildIndex > arr.size () - 1 ) ? parentValue + leftChildValue : arr.get ( rightChildIndex );
 			
-		if ( parentValue > leftChildValue || parentValue > rightChildValue ) {
-			
-			if ( leftChildValue <= rightChildValue ) {
+			if ( parentValue > leftChildValue || parentValue > rightChildValue ) {
+				
+				if ( leftChildValue <= rightChildValue ) {
 					
-				swap ( arr, parentNode, leftChildIndex );
+					swap ( arr, parentNode, leftChildIndex );
 					
-				heapify ( arr, 1 );
+					parentNode = 1;
 					
+				}
+				
+				else if ( rightChildValue < leftChildValue ) {
+					
+					swap ( arr, parentNode, rightChildIndex );
+					
+					parentNode = 1;
+					
+				}
+				
 			}
+			
+			else {
 				
-			else if ( rightChildValue < leftChildValue ) {
-					
-				swap ( arr, parentNode, rightChildIndex );
-					
-				heapify ( arr, 1 );
-					
+				parentNode ++;
+				
 			}
-				
-		}
-		
-		else {
-			
-			heapify ( arr, parentNode + 1 );
 			
 		}
-		
-		if ( arr.get ( 0 ) == null ) {
 			
-			arr.remove ( 0 );
-			
-		}
-		
-		return true;
+		arr.remove ( 0 );
 							
 	}
 	
