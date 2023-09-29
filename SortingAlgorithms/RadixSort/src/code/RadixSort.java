@@ -11,10 +11,6 @@ public class RadixSort {
 	
 	static int maxLength = 0;
 	
-	static int max;
-	
-	static int min;
-	
 	static boolean negNumPresent = false;
 
 	public static void main( String[] args ) {		
@@ -107,49 +103,13 @@ public class RadixSort {
 			
 		}
 		
-	}
+	}	
 	
-	static int findMax ( ArrayList<Integer> arr ) {
+	static HashMap<Character, Integer> setMap () {
 		
-		Integer max = arr.get ( 0 );
+		HashMap<Character, Integer> frequencyMap = new HashMap<Character, Integer>();
 		
-		for ( int index = 1; index < arr.size (); ++ index ) {
-			
-			if ( arr.get ( index ) > max ) {
-				
-				max = arr.get ( index );
-				
-			}
-			
-		}
-		
-		return max;
-		
-	}
-	
-	static int findMin ( ArrayList<Integer> arr ) {
-		
-		Integer min = arr.get ( 0 );
-		
-		for ( int index = 1; index < arr.size (); ++ index ) {
-			
-			if ( arr.get ( index ) < min ) {
-				
-				min = arr.get ( index );
-				
-			}
-			
-		}
-		
-		return min;
-		
-	}
-	
-	static HashMap<Integer, Integer> setMap ( int min, int max ) {
-		
-		HashMap<Integer, Integer> frequencyMap = new HashMap<Integer, Integer>();
-		
-		for ( int integer = min; integer < max + 1; ++ integer ) {
+		for ( char integer = '0'; integer <= '9'; ++ integer ) {
 			
 			frequencyMap.put ( integer, 0 );
 			
@@ -159,9 +119,9 @@ public class RadixSort {
 		
 	}
 	
-	static HashMap<Integer, Integer> findCounts ( HashMap<Integer, Integer> frequencyMap, ArrayList<Integer> arr ) {
+	static HashMap<Character, Integer> findCounts ( HashMap<Character, Integer> frequencyMap, ArrayList<Character> arr ) {
 		
-		for ( Integer integer : arr ) {
+		for ( char integer : arr ) {
 			
 			frequencyMap.put ( integer, frequencyMap.get ( integer ) + 1 );
 			
@@ -171,22 +131,54 @@ public class RadixSort {
 		
 	}
 	
-	static ArrayList<Integer> generateSortedList ( HashMap<Integer, Integer> frequencyMap ) {
+	static ArrayList<Character> getCharLists ( int index, ArrayList<String> strings ) {
 		
-		ArrayList<Integer> sortedList = new ArrayList<Integer>();
+		ArrayList<Character> result = new ArrayList<Character>();
 		
-		for ( Integer integer = min; integer < max + 1; ++ integer ) {
+		for ( String string: strings ) {
 			
-			if ( frequencyMap.get ( integer ) > 0 ) {
-				
-				sortedList.addAll ( Collections.nCopies ( frequencyMap.get ( integer ), integer ) );
-								
-			}
-						
+			result.add ( string.charAt ( index ) );						
+			
 		}
 		
-		return sortedList;		
+		return result;
 		
 	}
 	
+	static ArrayList<Character> countsortChars ( ArrayList<Character> chars, 
+			
+												 HashMap<Character, Integer> frequencyMap ) {
+		
+		ArrayList<Character> result = new ArrayList<Character>();
+		
+		for ( char digit = '0'; digit <= 9; ++ digit ) {
+			
+			if ( frequencyMap.get ( digit ) > 0 ) {
+				
+				result.addAll ( Collections.nCopies ( frequencyMap.get ( digit ), digit ) );
+				
+			}
+			
+		}
+		
+		return result;
+		
+	}
+	
+	static void sortStrings () {
+		
+		for ( int index = 0; index < maxLength; ++ index ) {
+			
+			ArrayList<Character> chars = getCharLists ( index, arrStrings );
+			
+			HashMap<Character, Integer> frequencyMap = setMap ();
+			
+			frequencyMap = findCounts ( frequencyMap, chars );
+			
+			ArrayList<Character> sortedChars = countsortChars ( chars, frequencyMap );
+			
+		}
+		
+	}
+		
 }
