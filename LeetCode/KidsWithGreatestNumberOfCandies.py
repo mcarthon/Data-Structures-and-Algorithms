@@ -2,7 +2,17 @@ class Solution:
 
     def __init__ ( self ):
 
-        print ( self.kidsWithCandies ( [ 2, 3, 5, 1, 3 ], 3 ) );
+        print ( self.kidsWithCandies2 ( [ 2, 3, 5, 1, 3 ], 3 ) );
+
+    # New Solution
+
+    def kidsWithCandies2 ( self, candies: list [ int ], extraCandies: int ) -> list [ bool ]:
+
+        max_candies = max ( candies );
+
+        return [ ( candy + extraCandies ) >= max_candies for candy in candies ];
+
+    # Old Solution
 
     def kidsWithCandies ( self, candies: list [ int ], extraCandies: int ) -> list [ bool ]:
 
