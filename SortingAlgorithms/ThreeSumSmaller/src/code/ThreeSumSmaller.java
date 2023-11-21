@@ -25,37 +25,35 @@ public class ThreeSumSmaller {
 		
 		Collections.sort ( numbers );
 		
-		Integer count = 0;
+		int count = 0;
 		
-		int focusIndex = 0;
-		
-		int leftIndex  = 1;
-		
-		int rightIndex = 2;
-		
-		while ( focusIndex < numbers.size() - 2 ) {
+		for ( int firstIndex = 0; firstIndex < numbers.size () - 2; ++ firstIndex ) {
 			
-			while ( rightIndex < 0  ) {
+			int firstNumber = numbers.get ( firstIndex );
+			
+			int secondIndex = firstIndex + 1;
+			
+			int thirdIndex = numbers.size () - 1;
+			
+			while ( secondIndex < thirdIndex ) {
 				
-				int sum = numbers.get ( focusIndex ) + numbers.get ( leftIndex ) + numbers.get ( rightIndex );
+				int sum = firstNumber + numbers.get ( secondIndex ) + numbers.get ( thirdIndex );
 				
 				if ( sum < target ) {
 					
-					count ++;										
+					count += ( thirdIndex - secondIndex );
+					
+					secondIndex ++;
 					
 				}
-
-				leftIndex ++;
 				
-				rightIndex --;
+				else {
+					
+					thirdIndex --;
+					
+				}
 				
 			}
-			
-			focusIndex ++;
-			
-			leftIndex = focusIndex + 1;
-			
-			rightIndex = numbers.size() - 1;
 			
 		}
 		
