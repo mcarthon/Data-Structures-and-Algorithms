@@ -125,45 +125,46 @@ public class DiagonalTraverseII {
 		
 	}
 	
-	static int countElements ( List<List<Integer>> nums ) {
-		
-		int count =  0;
-		
-		int row = 0;
-		
-		int column = 0;
-		
-		while ( row < nums.size() ) {
-			
-			if ( nums.get(row).get(column) == null ) {
-				
-				row ++;
-				
-				column = 0;
-				
-			}
-			
-			else {
-				
-				count ++;
-				
-				column ++;
-				
-				if ( column >= nums.get( row ).size() ) {
-					
-					column = 0;
-					
-					row ++;
-					
-				}
-				
-			}			
-						
-		}
-		
-		return count;
-		
-	}
+//	This method is not used in the solution. I thought it was needed at first, but realized it wasn't
+//	static int countElements ( List<List<Integer>> nums ) {
+//		
+//		int count =  0;
+//		
+//		int row = 0;
+//		
+//		int column = 0;
+//		
+//		while ( row < nums.size() ) {
+//			
+//			if ( nums.get(row).get(column) == null ) {
+//				
+//				row ++;
+//				
+//				column = 0;
+//				
+//			}
+//			
+//			else {
+//				
+//				count ++;
+//				
+//				column ++;
+//				
+//				if ( column >= nums.get( row ).size() ) {
+//					
+//					column = 0;
+//					
+//					row ++;
+//					
+//				}
+//				
+//			}			
+//						
+//		}
+//		
+//		return count;
+//		
+//	}
 	
 	static int[] changeArrayListToArray ( ArrayList<Integer> array ) {
 		
