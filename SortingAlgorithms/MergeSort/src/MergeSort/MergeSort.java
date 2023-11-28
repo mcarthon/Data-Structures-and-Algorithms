@@ -7,10 +7,21 @@ public class MergeSort {
 
     ArrayList<Integer> testArray = new ArrayList<Integer> ();
 
-    testArray.add(1);
+    testArray.add(-11);
+    testArray.add(24);
+    testArray.add(-3);
+    testArray.add(46);
+    testArray.add(-11);
+    testArray.add(24);
+    testArray.add(-3);
+    testArray.add(46);
+    testArray.add(0);
     testArray.add(2);
-    testArray.add(3);
-    testArray.add(4);
+    testArray.add(-8);
+    testArray.add(16);
+    testArray.add(11);
+    testArray.add(24);
+    testArray.add(499);
 
     merge_sort(testArray);
 

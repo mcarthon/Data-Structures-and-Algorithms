@@ -1,66 +1,150 @@
 package code;
 
+import java.util.ArrayList;
+
 public class MergeKsortedLists {
 
 	public static void main ( String [] args ) {
 		
-		ListNode head1 = new ListNode ( 1 );
+		ListNode head1 = new ListNode (0);
 		
-		ListNode newNode1 = new ListNode ( 4 );
+		ListNode head1next = new ListNode (2);
 		
-		ListNode newNode2 = new ListNode ( 5 );
+		ListNode head1nextnext = new ListNode (4);
 		
-		head1.next = newNode1;
+		head1.next = head1next;
 		
-		newNode1.next = newNode2;
+		head1next.next = head1nextnext;
 		
-		ListNode head2 = new ListNode ( 1 );
+		ListNode head2 = new ListNode (-1);
 		
-		ListNode newNode3 = new ListNode ( 3 );
+		ListNode head2next = new ListNode (0);
 		
-		ListNode newNode4 = new ListNode ( 4 );
+		ListNode head2nextnext = new ListNode (3);
 		
-		head2.next = newNode3;
+		head2.next = head2next;
 		
-		newNode3.next = newNode4;
+		head2next.next = head2nextnext;
 		
-		ListNode head3 = new ListNode ( 2 );
+		ListNode head3 = null;
 		
-		ListNode newNode5 = new ListNode ( 6 );
+		ListNode head4 = new ListNode (-15);
 		
-		head3.next = newNode5;
+		ArrayList<ListNode> lists = new ArrayList<ListNode>();
 		
-		ListNode [] lists = { head1, head2, head3 };
+		lists.add(head1);
 		
-		System.out.println ( mergeKLists ( lists ) );
+		lists.add(head2);
 		
-		ListNode head4 = new ListNode ( 0 );
+//		lists.add(head3);
 		
-		ListNode [] lists2 = { head4.next };
+		lists.add(head4);
 		
-		System.out.println ( mergeKLists ( lists2 ) );
+		printLinkedList ( merge_k_lists ( lists ) );
 		
-		ListNode head5 = new ListNode ( 1 );
-		
-		ListNode head6 = new ListNode ( 0 );
-		
-		ListNode [] lists3 = { head5, head6 };
-		
-		System.out.println ( mergeKLists ( lists3 ) );
-
 	}
 	
-	static ListNode mergeKLists ( ListNode [] lists ) {
+	static ListNode merge_k_lists ( ArrayList<ListNode> lists ) {
 		
-		ListNode dummyHead = new ListNode ( 0 );
+		if ( lists.size() == 0 ) {
+			
+			return null; 
+			
+		}
+		
+		while ( lists.size() > 1 ) {
+			
+			ArrayList<ListNode> mergedLists = new ArrayList<ListNode>();
+			
+			for ( int index = 0; index < lists.size(); index += 2 )  {
+				
+				ListNode firstHalf = lists.get ( index );
+				
+				if  ( index + 1 < lists.size() ) {
+					
+					ListNode secondHalf = lists.get ( index + 1 );
+					
+					mergedLists.add ( merge ( firstHalf, secondHalf ) );
+					
+				}
+				
+				else {
+					
+				ListNode secondHalf = null;
+				
+				mergedLists.add ( merge ( firstHalf, secondHalf ) );
+				
+				}
+				
+			}						
+			
+			lists = mergedLists;
+			
+		}
+		
+		return lists.get(0);
+		
+	}
+	
+	static ListNode merge ( ListNode firstHalf, ListNode secondHalf ) {
+		
+		ListNode fhRunner = firstHalf;
+		
+		ListNode shRunner = secondHalf;
+		
+		ListNode dummyHead = new ListNode(0);
 		
 		ListNode tail = dummyHead;
 		
-		for ( int index = 0; index < lists.length; ++ index ) {
+		while ( fhRunner != null && shRunner != null ) {
 			
-			ListNode currentHead = lists [ index ];
+			if ( fhRunner.val < shRunner.val ) {
 				
-			tail = mergeLists ( currentHead, tail, index );
+				ListNode newNode = new ListNode ( fhRunner.val );
+				
+				tail.next = newNode;
+				
+				tail = tail.next;
+				
+				fhRunner = fhRunner.next;
+				
+			}
+			
+			else {
+				
+				ListNode newNode = new ListNode ( shRunner.val );
+				
+				tail.next = newNode;
+				
+				shRunner = shRunner.next;
+				
+				tail = tail.next;
+				
+			}
+			
+		}
+		
+		while ( fhRunner != null ) {
+			
+			ListNode newNode = new ListNode ( fhRunner.val );
+			
+			tail.next = newNode;
+			
+			tail = tail.next;
+			
+			fhRunner = fhRunner.next;
+			
+		}
+		
+		while ( shRunner != null ) {
+			
+			ListNode newNode = new ListNode ( shRunner.val );
+			
+			tail.next = newNode;
+			
+			tail = tail.next;
+			
+			shRunner = shRunner.next;
 			
 		}
 		
@@ -68,93 +152,17 @@ public class MergeKsortedLists {
 		
 		dummyHead.next = null;
 		
-		printLinkedList ( result );
-		
 		return result;
 		
 	}
-
-	static ListNode mergeLists ( ListNode l1, ListNode tailHead, int iteration ) {
-		
-		ListNode l1Runner = l1;
-		
-		ListNode tail = tailHead;
-		
-		while ( l1Runner != null && tail.next != null ) {
-			
-			if ( l1Runner.val <= tail.val ) {
-				
-				ListNode newNode = new ListNode ( l1Runner.val );
-				
-				ListNode originalNext = tail.next;
-				
-				tail.next = newNode;
-				
-				tail.next.next = originalNext;
-				
-				tail = tail.next;
-				
-				l1Runner = l1Runner.next;
-				
-			}
-			
-			else if ( l1Runner.val < tail.next.val ) {
-								
-				ListNode newNode = new ListNode ( l1Runner.val );
-				
-				ListNode originalNext = tail.next;
-				
-				tail.next = newNode;
-				
-				tail.next.next = originalNext;
-				
-				tail = tail.next;
-				
-				l1Runner = l1Runner.next;
-				
-			}
-			
-			else {
-				
-				tail = tail.next;
-				
-			}
-			
-		}
-		
-		while ( l1Runner != null ) {
-			
-			ListNode newNode = new ListNode ( l1Runner.val );
-			
-			ListNode originalNext = tail.next;
-			
-			tail.next = newNode;
-			
-			newNode.next = originalNext;
-			
-			tail = tail.next;
-			
-			l1Runner = l1Runner.next;
-			
-		}
-		
-		if ( iteration < 1 ) {
-			
-			return tailHead.next;
-			
-		}
-		
-		return tailHead;
-
-	}
 	
-	static void printLinkedList ( ListNode head ) {
+	static void printLinkedList ( ListNode node ) {
 		
-		while ( head != null ) {
+		while ( node != null ) {
 			
-			System.out.println ( head.val );
+			System.out.println ( node.val );
 			
-			head = head.next;
+			node = node.next;
 			
 		}
 		
