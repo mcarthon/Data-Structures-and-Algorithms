@@ -1,0 +1,19 @@
+Towers of Hanoi
+
+source auxillary destination
+______ _________ ___________
+
+n = 1
+Steps: 2^n - 1 = 1
+Solution: [1, 3]
+
+n = 2
+Steps: 2^n - 1 = 3
+Solution: [1, 2] -> [1, 3] -> [2, 3]
+
+n = 3
+Steps: 2^n - 1 = 7
+Solution: [1, 3] -> [1, 2] -> [3, 2] -> [1, 3] -> [2, 1] -> [2, 3] -> [1, 3]
+
+n = 4
+Steps: 2^n - 1 =
