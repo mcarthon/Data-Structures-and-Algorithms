@@ -31,7 +31,7 @@ public class PermuteArrayOfUniqueIntegers {
 
         if ( array.size() < 1 ) {
 
-            result.add ( slate );
+            result.add ( new ArrayList<Integer>( slate ) );
 
             return result;
 
@@ -50,6 +50,8 @@ public class PermuteArrayOfUniqueIntegers {
             remainingElements.addAll ( secondHalf );
 
             helper ( slate, remainingElements, result );
+
+            slate.remove ( slate.size() - 1 );
 
         }
 

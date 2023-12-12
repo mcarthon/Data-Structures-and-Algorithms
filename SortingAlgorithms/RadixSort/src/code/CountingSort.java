@@ -44,7 +44,7 @@ public class CountingSort {
 		
 		ArrayList<Integer> sortedList = new ArrayList<Integer>();
 		
-		for ( int digit = 0; digit < 10 ; ++ digit ) {
+		for ( int digit = 0; digit < 10 ; ++digit ) {
 			
 			if ( frequencyMap.get ( digit ) > 0 ) {
 				
@@ -57,5 +57,14 @@ public class CountingSort {
 		return sortedList;		
 		
 	}
+	
+//	utility function to give you the digit number based on the iteration
+	
+//	radix sort uses bucket sort
+	
+//	823, 456, 789, 821
+//	823 -> bucket 3
+//	456 -> bucket 6
+//	821 -> bucket 1
 	
 }
