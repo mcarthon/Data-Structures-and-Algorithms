@@ -1,0 +1,4 @@
+﻿  StickerStrings.cpp
+C:\Users\Mark\Desktop\DataStructuresAndAlgorithms\Miscellaneous\StickerStrings\StickerStrings.cpp(25,23): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Mark\Desktop\DataStructuresAndAlgorithms\Miscellaneous\StickerStrings\StickerStrings.cpp(29,25): warning C4018: '<': signed/unsigned mismatch
+  StickerStrings.vcxproj -> C:\Users\Mark\Desktop\DataStructuresAndAlgorithms\Miscellaneous\StickerStrings\Debug\StickerStrings.exe
