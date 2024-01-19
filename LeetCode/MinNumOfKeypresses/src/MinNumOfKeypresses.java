@@ -1,12 +1,6 @@
-import java.util.HashMap;
+import java.util.*;
 
 public class MinNumOfKeypresses {
-
-    public HashMap<Character, Integer> oneKeyPress = new HashMap<Character, Integer>();
-
-    public HashMap<Character, Integer> twoKeyPresses = new HashMap<Character, Integer>();
-
-    public HashMap<Character, Integer> threeKeyPresses = new HashMap<Character, Integer>();
 
     public static void main ( String [] args ) {
 
@@ -20,47 +14,72 @@ public class MinNumOfKeypresses {
 
         int length = string.length();
 
-        this.createMaps ( string, length );
+        LinkedHashMap<Character, Integer> map = this.createMaps ( string, length );
 
-        return this.sumValues ( this.oneKeyPress ) + 2 * this.sumValues ( this.twoKeyPresses ) + 3 * this.sumValues ( threeKeyPresses );
+        return this.sumValues ( map );
 
     }
 
-    public void createMaps ( String string, int length ) {
+    public LinkedHashMap<Character, Integer> createMaps ( String string, int length ) {
+
+        HashMap<Character, Integer> frequencies = new HashMap<Character, Integer>();
 
         for ( int index = 0; index < length; ++ index ) {
 
             Character currentCharacter = string.charAt ( index );
 
-            if ( this.oneKeyPress.size() < 9 || oneKeyPress.containsKey ( currentCharacter ) ) {
+            frequencies.put ( currentCharacter, frequencies.getOrDefault ( currentCharacter, 0  ) + 1 );
 
-                oneKeyPress.put ( currentCharacter, oneKeyPress.getOrDefault ( currentCharacter, 0 ) + 1 );
+        }
+
+        List<Map.Entry<Character, Integer>> entryList = new ArrayList<> ( frequencies.entrySet() );
+
+        Collections.sort ( entryList, Map.Entry.comparingByValue ( (a, b) -> b - a ) );
+
+        LinkedHashMap<Character, Integer> sortedMap = new LinkedHashMap<Character, Integer>();
+
+        for ( Map.Entry<Character, Integer> entry: entryList ) {
+
+            sortedMap.put ( entry.getKey(), entry.getValue() );
+
+        }
+
+        return sortedMap;
+
+    }
+
+    public int sumValues ( LinkedHashMap<Character, Integer> map ) {
+
+        int sum = 0;
+
+        int count = 0;
+
+        for ( int num: map.values() ) {
+
+            if ( count < 9 ) {
+
+                sum += num;
+
+                count ++;
 
             }
 
-            else if ( this.twoKeyPresses.size() < 9 || twoKeyPresses.containsKey ( currentCharacter ) ) {
+            else if ( count < 18 ) {
 
-                twoKeyPresses.put ( currentCharacter, twoKeyPresses.getOrDefault ( currentCharacter, 0 ) + 1 );
+                sum += 2 * num;
+
+                count ++;
 
             }
 
             else {
 
-                threeKeyPresses.put ( currentCharacter, threeKeyPresses.getOrDefault ( currentCharacter, 0 ) + 1 );
+                sum += 3 * num;
+
+                count ++;
 
             }
 
-        }
-
-    }
-
-    public int sumValues ( HashMap<Character, Integer> map ) {
-
-        int sum = 0;
-
-        for ( int num: map.values() ) {
-
-            sum += num;
 
         }
 
