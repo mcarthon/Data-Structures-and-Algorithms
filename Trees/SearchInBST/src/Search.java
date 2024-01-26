@@ -18,14 +18,17 @@ public class Search {
 
         }
 
-        if ( search_node_in_bst ( root.left, value ).equals ( true )
-                || search_node_in_bst ( root.right, value ).equals ( true ) ) {
+        if ( value < root.value ) {
 
-            return answer;
+            return search_node_in_bst ( root.left, value );
 
         }
 
-        return answer;
+        else {
+
+            return search_node_in_bst ( root.right, value );
+
+        }
 
     }
 
