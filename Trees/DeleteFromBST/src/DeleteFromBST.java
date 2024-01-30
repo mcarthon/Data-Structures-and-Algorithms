@@ -5,12 +5,26 @@ public class DeleteFromBST {
     public static void main ( String [] args ) {
 
 //        BinaryTreeNode negOne = new BinaryTreeNode ( -1 );
-        BinaryTreeNode five = new BinaryTreeNode ( 5 );
-
+//        BinaryTreeNode five = new BinaryTreeNode ( 5 );
+//
 //        BinaryTreeNode three = new BinaryTreeNode ( 3, negOne, five );
 //        BinaryTreeNode eleven = new BinaryTreeNode ( 11, null, null );
 //
 //        BinaryTreeNode ten = new BinaryTreeNode ( 10, three, eleven );
+
+//        BinaryTreeNode negOneBillion = new BinaryTreeNode ( -1000000000 );
+//        BinaryTreeNode posOneBillion = new BinaryTreeNode ( 1000000000 );
+//
+//        BinaryTreeNode oneHundred = new BinaryTreeNode ( 100, negOneBillion, null );
+//        BinaryTreeNode twoHundred = new BinaryTreeNode ( 200, null, posOneBillion );
+//
+//        BinaryTreeNode oneTwenty = new BinaryTreeNode ( 120, oneHundred, twoHundred );
+
+        BinaryTreeNode ten = new BinaryTreeNode ( 10 );
+        BinaryTreeNode eight = new BinaryTreeNode ( 8, null, ten );
+        BinaryTreeNode seven = new BinaryTreeNode ( 7, null, eight );
+        BinaryTreeNode six = new BinaryTreeNode ( 6, null, seven );
+        BinaryTreeNode five = new BinaryTreeNode ( 5, null, six );
 
         ArrayList<Integer> values = new ArrayList<Integer>();
 
@@ -18,7 +32,16 @@ public class DeleteFromBST {
 //        values.add ( 6 );
 //        values.add ( 9 );
 
+//        values.add ( 5 );
+
+//        values.add ( 1000000000 );
+//        values.add ( 100 );
+//        values.add ( 120 );
+
         values.add ( 5 );
+        values.add ( 6 );
+        values.add ( 7 );
+        values.add ( 8 );
 
         delete_from_bst ( five, values );
 
@@ -54,7 +77,7 @@ public class DeleteFromBST {
 
             else if ( currentNode.left == null || currentNode.right == null ) {
 
-                oneChild ( previous, currentNode );
+                root = oneChild ( previous, currentNode, root );
 
             }
 
@@ -108,9 +131,25 @@ public class DeleteFromBST {
 
     }
 
-    static void oneChild ( BinaryTreeNode previous, BinaryTreeNode currentNode ) {
+    static BinaryTreeNode oneChild ( BinaryTreeNode previous, BinaryTreeNode currentNode, BinaryTreeNode root ) {
 
-        if ( currentNode.value < previous.value ) {
+        if ( previous == null ) {
+
+            if ( currentNode.left != null ) {
+
+                root = currentNode.left;
+
+            }
+
+            else {
+
+                root = currentNode.right;
+
+            }
+
+        }
+
+        else if ( currentNode.value < previous.value ) {
 
             if ( currentNode.left != null ) {
 
@@ -141,6 +180,8 @@ public class DeleteFromBST {
             }
 
         }
+
+        return root;
 
     }
 
