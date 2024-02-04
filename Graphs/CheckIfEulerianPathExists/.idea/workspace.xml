@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="4c939f65-3012-41ac-ac1a-5b409ad0fb7c" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../../.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CheckIfEulerianCycleExists.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/CheckIfEulerianCycleExists.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../LeetCode/CountNodesEqualToAverageOfSubtree/src/CountNodesEqualToAverageOfSubTree.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../LeetCode/CountNodesEqualToAverageOfSubtree/src/CountNodesEqualToAverageOfSubTree.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../LeetCode/SingleNumber/src/SingleNumber.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../LeetCode/SingleNumber/src/SingleNumber.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Miscellaneous/StickerStrings/.vs/StickerStrings/v16/.suo" beforeDir="false" afterPath="$PROJECT_DIR$/../../Miscellaneous/StickerStrings/.vs/StickerStrings/v16/.suo" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Miscellaneous/StickerStrings/.vs/StickerStrings/v16/Browse.VC.db" beforeDir="false" afterPath="$PROJECT_DIR$/../../Miscellaneous/StickerStrings/.vs/StickerStrings/v16/Browse.VC.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Miscellaneous/StickerStrings/Debug/StickerStrings.exe" beforeDir="false" afterPath="$PROJECT_DIR$/../../Miscellaneous/StickerStrings/Debug/StickerStrings.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Miscellaneous/StickerStrings/Debug/StickerStrings.ilk" beforeDir="false" afterPath="$PROJECT_DIR$/../../Miscellaneous/StickerStrings/Debug/StickerStrings.ilk" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Miscellaneous/StickerStrings/Debug/StickerStrings.log" beforeDir="false" afterPath="$PROJECT_DIR$/../../Miscellaneous/StickerStrings/Debug/StickerStrings.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Miscellaneous/StickerStrings/Debug/StickerStrings.obj" beforeDir="false" afterPath="$PROJECT_DIR$/../../Miscellaneous/StickerStrings/Debug/StickerStrings.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Miscellaneous/StickerStrings/Debug/StickerStrings.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/../../Miscellaneous/StickerStrings/Debug/StickerStrings.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Miscellaneous/StickerStrings/Debug/StickerStrings.tlog/link.read.1.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/../../Miscellaneous/StickerStrings/Debug/StickerStrings.tlog/link.read.1.tlog" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Miscellaneous/StickerStrings/Debug/StickerStrings.tlog/link.write.1.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/../../Miscellaneous/StickerStrings/Debug/StickerStrings.tlog/link.write.1.tlog" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Miscellaneous/StickerStrings/Debug/vc142.idb" beforeDir="false" afterPath="$PROJECT_DIR$/../../Miscellaneous/StickerStrings/Debug/vc142.idb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Miscellaneous/StickerStrings/Debug/vc142.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/../../Miscellaneous/StickerStrings/Debug/vc142.pdb" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "customColor": "",
+  "associatedIndex": 1
+}]]></component>
+  <component name="ProjectId" id="2bv2hjgMU2PCxpFr9pUQKb3sn12" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "master",
+    "kotlin-language-version-configured": "true"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="4c939f65-3012-41ac-ac1a-5b409ad0fb7c" name="Changes" comment="" />
+      <created>1707081354302</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1707081354302</updated>
+    </task>
+    <servers />
+  </component>
+</project>
