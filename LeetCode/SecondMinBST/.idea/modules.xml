@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/SecondMinBST.iml" filepath="$PROJECT_DIR$/SecondMinBST.iml" />
+      <module fileurl="file://$PROJECT_DIR$/SecondMinBT.iml" filepath="$PROJECT_DIR$/SecondMinBT.iml" />
     </modules>
   </component>
 </project>
