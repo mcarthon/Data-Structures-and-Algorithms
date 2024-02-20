@@ -24,13 +24,15 @@ public class NumberOfIslands {
 
         HashSet<Integer> validVertices = new HashSet<Integer>();
 
-        HashSet<List<Integer>> edgeList = new HashSet<List<Integer>>();
+        List<List<Integer>> adjacencyList = new ArrayList<List<Integer>>();
 
         int[][] directions =  { { -1, 0 }, { 1, 0 }, { 0, -1 }, { 0, 1 } };
 
         for ( int row = 0; row < numberOfRows; ++ row ) {
 
             for ( int column = 0; column < numberOfColumns; ++ column ) {
+
+                adjacencyList.add ( new ArrayList<Integer>() );
 
                 if ( grid [ row ] [ column ] == '1' ) {
 
@@ -55,13 +57,7 @@ public class NumberOfIslands {
 
                         if ( neighborDimensionsInBounds && grid [ neighborRow ] [ neighborColumn ] == '1' ) {
 
-                            List<Integer> newEdge = new ArrayList<Integer>();
-
-                            newEdge.add ( Math.min ( vertex, neighbor ) );
-
-                            newEdge.add ( Math.max ( vertex, neighbor ) );
-
-                            edgeList.add ( newEdge );
+                            adjacencyList.get ( vertex ).add ( neighbor );
 
                         }
 
@@ -73,15 +69,13 @@ public class NumberOfIslands {
 
         }
 
-        return this.countConnectedComponents ( n, validVertices, edgeList );
+        return this.countConnectedComponents ( n, validVertices, adjacencyList );
 
     }
 
-    public int countConnectedComponents ( int n, HashSet<Integer> validVertices, HashSet<List<Integer>> edgeList ) {
+    public int countConnectedComponents ( int n, HashSet<Integer> validVertices, List<List<Integer>> adjacencyList ) {
 
         int numComponents = 0;
-
-        List<ArrayList<Integer>> adjacencyList = this.convertEdgeListToAdjacencyList ( n, edgeList );
 
         int[] visited = new int[ n ];
 
@@ -101,11 +95,11 @@ public class NumberOfIslands {
 
     }
 
-    public void dfs ( int currentVertex, int[] visited, List<ArrayList<Integer>> adjacencyList ) {
+    public void dfs ( int currentVertex, int[] visited, List<List<Integer>> adjacencyList ) {
 
         visited [ currentVertex ] = 1;
 
-        ArrayList<Integer> currentAdjList = adjacencyList.get ( currentVertex );
+        List<Integer> currentAdjList = adjacencyList.get ( currentVertex );
 
         for ( int neighbor: currentAdjList ) {
 
@@ -115,38 +109,6 @@ public class NumberOfIslands {
             }
 
         }
-
-    }
-
-    public List<ArrayList<Integer>> convertEdgeListToAdjacencyList ( int n, HashSet<List<Integer>> edgeList ) {
-
-        List<ArrayList<Integer>> result = new ArrayList<ArrayList<Integer>>();
-
-        for ( int vertex = 0; vertex < n; ++ vertex ) {
-
-            ArrayList<Integer> adjacencyList = new ArrayList<Integer>();
-
-            for ( List<Integer> edge: edgeList ) {
-
-                int firstElement =  edge.get ( 0 );
-
-                int secondElement =  edge.get ( 1 );
-
-                if ( firstElement == vertex || secondElement == vertex ) {
-
-                    int neighbor = firstElement == vertex ? secondElement : firstElement;
-
-                    adjacencyList.add ( neighbor );
-
-                }
-
-            }
-
-            result.add ( adjacencyList );
-
-        }
-
-        return result;
 
     }
 
