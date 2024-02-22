@@ -2,11 +2,19 @@ import java.util.*;
 
 public class RottingOranges {
 
+    public static void main ( String[] args ) {
+
+        int[][] grid = {{2,1,1},{1,1,0},{0,1,1}};
+
+        RottingOranges ro = new RottingOranges();
+
+        System.out.println ( ro.orangesRotting ( grid ) );
+
+    }
+
     public List<Integer> freshOrangeIndices = new ArrayList<Integer>();
 
     public int orangesRotting ( int[][] grid ) {
-
-        int maxShortestPath = 0;
 
         int numberOfRows = grid.length;
 
@@ -16,31 +24,29 @@ public class RottingOranges {
 
         int [] visited = new int [ numberOfCells ];
 
-        int [] level = new int [ numberOfCells ];
-
         HashMap<Integer, List<Integer>> adjacencyMap = this.createAdjacencyMap ( numberOfRows, numberOfColumns, grid );
 
-        for ( int rottenOrange : adjacencyMap.keySet() ) {
+        return this.freshOrangeIndices.isEmpty() ? 0 : this.bfs ( visited, adjacencyMap );
 
-            if ( visited [ rottenOrange ] == 0 ) {
+    }
 
-                int result = this.bfs ( rottenOrange, level, visited, adjacencyMap );
+    public int bfs ( int[] visited, HashMap<Integer, List<Integer>> adjacencyMap ) {
 
-                maxShortestPath = Math.max ( maxShortestPath, result );
+        int minutes = 0;
+
+        Queue<Integer> queue = new LinkedList<Integer>();
+
+        for ( int orange : adjacencyMap.keySet() ) {
+
+            if ( !this.freshOrangeIndices.contains ( orange ) ) {
+
+                queue.add ( orange );
 
             }
 
         }
 
-        return maxShortestPath;
-
-    }
-
-    public int bfs ( int vertexID, int[] level, int[] visited, HashMap<Integer, List<Integer>> adjacencyMap ) {
-
-        Queue<Integer> queue = new LinkedList<Integer>();
-
-        queue.add ( vertexID );
+        Queue<Integer> newQueue = new LinkedList<Integer>();
 
         while ( !queue.isEmpty() ) {
 
@@ -54,15 +60,33 @@ public class RottingOranges {
 
                     visited [ neighbor ] = 1;
 
-                    level [ neighbor ] = level [ node ] + 1;
+                    newQueue.add ( neighbor );
 
-                    queue.add ( neighbor );
+                    this.freshOrangeIndices.remove ( Integer.valueOf( neighbor ) );
+
+                    if ( this.freshOrangeIndices.isEmpty() ) {
+
+                        return minutes + 1;
+
+                    }
 
                 }
 
             }
 
+            if ( queue.isEmpty() ) {
+
+                minutes ++;
+
+                queue.addAll ( newQueue );
+
+                newQueue.clear();
+
+            }
+
         }
+
+        return this.freshOrangeIndices.isEmpty() ? minutes : -1;
 
     }
 
@@ -76,11 +100,11 @@ public class RottingOranges {
 
                 int vertexID = numberOfColumns * row + column;
 
-                if ( grid[row][column] == 2 ) {
+                if ( grid[row][column] > 0 ) {
 
-                    List<Integer> adjacentFreshers = this.findAdjacentFreshOranges ( row, column, numberOfRows, numberOfColumns, grid );
+                    List<Integer> adjacentOranges = this.findAdjacentOranges ( row, column, numberOfRows, numberOfColumns, grid );
 
-                    adjacencyMap.put ( vertexID, adjacentFreshers );
+                    adjacencyMap.put ( vertexID, adjacentOranges );
 
                 }
 
@@ -98,43 +122,43 @@ public class RottingOranges {
 
     }
 
-    public List<Integer> findAdjacentFreshOranges ( int row, int column, int numberOfRows, int numberOfColumns, int[][] grid ) {
+    public List<Integer> findAdjacentOranges ( int row, int column, int numberOfRows, int numberOfColumns, int[][] grid ) {
 
-        List<Integer> adjacentFreshOranges = new ArrayList<Integer>();
+        List<Integer> adjacentOranges = new ArrayList<Integer>();
 
-        if ( row - 1 > -1 && grid[ row - 1 ][column] == 1 ) {
+        if ( row - 1 > -1 && grid[ row - 1 ][column] > 0 ) {
 
             int vertexID = numberOfColumns * (row - 1) + column;
 
-            adjacentFreshOranges.add ( vertexID );
+            adjacentOranges.add ( vertexID );
 
         }
 
-        if ( row + 1 < numberOfRows && grid[ row + 1 ][column] == 1 ) {
+        if ( row + 1 < numberOfRows && grid[ row + 1 ][column] > 0 ) {
 
             int vertexID = numberOfColumns * (row + 1) + column;
 
-            adjacentFreshOranges.add ( vertexID );
+            adjacentOranges.add ( vertexID );
 
         }
 
-        if ( column - 1 > -1 && grid[ row ][ column - 1 ] == 1 ) {
+        if ( column - 1 > -1 && grid[ row ][ column - 1 ] > 0 ) {
 
             int vertexID = numberOfColumns * row + ( column - 1 );
 
-            adjacentFreshOranges.add ( vertexID );
+            adjacentOranges.add ( vertexID );
 
         }
 
-        if ( column + 1 < numberOfColumns && grid[ row ][ column + 1 ] == 1 ) {
+        if ( column + 1 < numberOfColumns && grid[ row ][ column + 1 ] > 0 ) {
 
             int vertexID = numberOfColumns * row + ( column + 1 );
 
-            adjacentFreshOranges.add ( vertexID );
+            adjacentOranges.add ( vertexID );
 
         }
 
-        return adjacentFreshOranges;
+        return adjacentOranges;
 
     }
 
