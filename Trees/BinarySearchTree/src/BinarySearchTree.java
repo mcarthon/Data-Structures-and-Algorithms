@@ -284,8 +284,6 @@ public class BinarySearchTree {
 
         }
 
-        BSTNode previous = null;
-
         BSTNode runner = root;
 
         while ( runner.value != node.value ) {
@@ -307,6 +305,52 @@ public class BinarySearchTree {
         }
 
         return predecessor;
+
+    }
+
+    public BSTNode findSuccessor ( BSTNode root, BSTNode node ) {
+
+        BSTNode successor = null;
+
+        if ( node.right != null ) {
+
+            successor = node.right;
+
+            while ( successor.left != null ) {
+
+                successor = successor.left;
+
+            }
+
+            return successor;
+
+        }
+
+        else {
+
+            BSTNode runner = root;
+
+            while ( runner.value != node.value ) {
+
+                if ( node.value < runner.value ) {
+
+                    successor = runner;
+
+                    runner = runner.left;
+
+                }
+
+                else {
+
+                    runner = runner.right;
+
+                }
+
+            }
+
+        }
+
+        return successor;
 
     }
 
