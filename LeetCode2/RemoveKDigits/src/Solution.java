@@ -7,7 +7,7 @@ public class Solution {
 
         Solution sl = new Solution();
 
-        System.out.println ( sl.removeKdigits ( "1234567890", 9 ) );
+        System.out.println ( sl.removeKdigits ( "112", 1 ) );
 
     }
 
@@ -61,23 +61,29 @@ public class Solution {
 
         while ( index < string.length() ) {
 
-            monotonicStack.add ( string.charAt ( index ++ ) );
+            monotonicStack.add ( string.charAt ( index ) );
+
+            int number = Integer.parseInt ( String.valueOf ( string.charAt ( index ) ) );
+
+            included [ number ] ++;
+
+            index ++;
 
         }
 
         while ( index > 0 && removed < k ) {
 
-            int number = Integer.parseInt ( String.valueOf ( string.charAt ( index ) ) );
-
             int place = index - 1;
+
+            int number = Integer.parseInt ( String.valueOf ( string.charAt ( place ) ) );
 
             char character = string.charAt ( place );
 
             if ( character != '0' && included [ number ] > 0 ) {
 
-                //add boolean bucket to see whether the value was added because I said 9 was removed when it
-                // wasn't even added
                 monotonicStack.remove ( Character.valueOf ( character ) );
+
+                included [ number ] --;
 
                 removed ++;
 
