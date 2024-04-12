@@ -19,7 +19,9 @@ public class Solution {
 
         }
 
-        List<Integer> monotonicStack = this.gatherIndices ( num, k );
+        int [] included = new int [ 10 ];
+
+        List<Character> monotonicStack = this.gatherIndices ( num, k, included );
 
         String result =  this.buildOutput ( num, monotonicStack );
 
@@ -27,15 +29,17 @@ public class Solution {
 
     }
 
-    public List<Integer> gatherIndices ( String string, int k ) {
+    public List<Character> gatherIndices ( String string, int k, int [] included ) {
 
-        List<Integer> monotonicStack = new ArrayList<Integer>();
+        List<Character> monotonicStack = new ArrayList<Character>();
 
         int index = 0;
 
         int removed = 0;
 
         while ( removed < k && index < string.length() - 1 ) {
+
+            int number = Integer.parseInt ( String.valueOf ( string.charAt ( index ) ) );
 
             if ( string.charAt ( index ) > string.charAt ( index + 1 ) ) {
 
@@ -45,7 +49,9 @@ public class Solution {
 
             else {
 
-                monotonicStack.add ( index );
+                monotonicStack.add ( string.charAt ( index ) );
+
+                included [ number ] ++;
 
             }
 
@@ -55,19 +61,29 @@ public class Solution {
 
         while ( index < string.length() ) {
 
-            monotonicStack.add ( index ++ );
+            monotonicStack.add ( string.charAt ( index ++ ) );
 
         }
 
-        while ( removed < k ) {
+        while ( index > 0 && removed < k ) {
 
-            int place = index - 1 - removed;
+            int number = Integer.parseInt ( String.valueOf ( string.charAt ( index ) ) );
 
-            if ( string.charAt ( place ) != '0' )
+            int place = index - 1;
 
-            monotonicStack.remove ( place );
+            char character = string.charAt ( place );
 
-            removed ++;
+            if ( character != '0' && included [ number ] > 0 ) {
+
+                //add boolean bucket to see whether the value was added because I said 9 was removed when it
+                // wasn't even added
+                monotonicStack.remove ( Character.valueOf ( character ) );
+
+                removed ++;
+
+            }
+
+            index --;
 
         }
 
@@ -77,13 +93,13 @@ public class Solution {
 
     }
 
-    public String buildOutput ( String string, List<Integer> monotonicStack ) {
+    public String buildOutput ( String string, List<Character> monotonicStack ) {
 
         StringBuilder sb = new StringBuilder();
 
-        for ( int index: monotonicStack ) {
+        for ( char character: monotonicStack ) {
 
-            sb.append ( string.charAt ( index ) );
+            sb.append ( character );
 
         }
 
