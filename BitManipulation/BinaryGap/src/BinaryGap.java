@@ -4,7 +4,7 @@ public class BinaryGap {
 
         BinaryGap bg = new BinaryGap();
 
-        System.out.println ( bg.binaryGap ( 17 ) );
+        System.out.println ( bg.binaryGap ( 32 ) );
 
     }
 
