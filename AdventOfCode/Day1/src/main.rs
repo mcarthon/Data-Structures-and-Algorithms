@@ -4,7 +4,7 @@ use std::path::Path;
 use regex::Regex;
 
 fn main() -> io::Result<()> {
-    let path = Path::new("C:\\Users\\Mark.Carthon\\Documents\\Data-Structures-and-Algorithms\\AdventOfCode\\Day1\\src\\text.txt");
+    let path = Path::new(".\\src\\text.txt");
     let file = File::open(&path)?;
     let reader = io::BufReader::new(file);
     let mut sum: i32 = 0;
