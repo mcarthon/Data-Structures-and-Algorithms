@@ -1,0 +1,9 @@
+C:\Users\Mark.Carthon\Documents\Data-Structures-and-Algorithms\AdventOfCode\Day1\target\debug\deps\derive_more-d621f1ddf0da8b57.dll: C:\Users\Mark.Carthon\.cargo\registry\src\index.crates.io-6f17d22bba15001f\derive_more-0.99.17\src\lib.rs C:\Users\Mark.Carthon\.cargo\registry\src\index.crates.io-6f17d22bba15001f\derive_more-0.99.17\src\utils.rs C:\Users\Mark.Carthon\.cargo\registry\src\index.crates.io-6f17d22bba15001f\derive_more-0.99.17\src\add_assign_like.rs C:\Users\Mark.Carthon\.cargo\registry\src\index.crates.io-6f17d22bba15001f\derive_more-0.99.17\src\add_helpers.rs C:\Users\Mark.Carthon\.cargo\registry\src\index.crates.io-6f17d22bba15001f\derive_more-0.99.17\src\add_like.rs
+
+C:\Users\Mark.Carthon\Documents\Data-Structures-and-Algorithms\AdventOfCode\Day1\target\debug\deps\derive_more-d621f1ddf0da8b57.d: C:\Users\Mark.Carthon\.cargo\registry\src\index.crates.io-6f17d22bba15001f\derive_more-0.99.17\src\lib.rs C:\Users\Mark.Carthon\.cargo\registry\src\index.crates.io-6f17d22bba15001f\derive_more-0.99.17\src\utils.rs C:\Users\Mark.Carthon\.cargo\registry\src\index.crates.io-6f17d22bba15001f\derive_more-0.99.17\src\add_assign_like.rs C:\Users\Mark.Carthon\.cargo\registry\src\index.crates.io-6f17d22bba15001f\derive_more-0.99.17\src\add_helpers.rs C:\Users\Mark.Carthon\.cargo\registry\src\index.crates.io-6f17d22bba15001f\derive_more-0.99.17\src\add_like.rs
+
+C:\Users\Mark.Carthon\.cargo\registry\src\index.crates.io-6f17d22bba15001f\derive_more-0.99.17\src\lib.rs:
+C:\Users\Mark.Carthon\.cargo\registry\src\index.crates.io-6f17d22bba15001f\derive_more-0.99.17\src\utils.rs:
+C:\Users\Mark.Carthon\.cargo\registry\src\index.crates.io-6f17d22bba15001f\derive_more-0.99.17\src\add_assign_like.rs:
+C:\Users\Mark.Carthon\.cargo\registry\src\index.crates.io-6f17d22bba15001f\derive_more-0.99.17\src\add_helpers.rs:
+C:\Users\Mark.Carthon\.cargo\registry\src\index.crates.io-6f17d22bba15001f\derive_more-0.99.17\src\add_like.rs:
