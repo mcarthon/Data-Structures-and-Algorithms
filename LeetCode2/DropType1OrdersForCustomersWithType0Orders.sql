@@ -7,4 +7,4 @@ SELECT order_id,
        customer_id,
        order_type
 FROM   temp
-WHERE  order_type = min;  
+WHERE  order_type = min;  	
